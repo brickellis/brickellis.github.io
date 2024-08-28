@@ -1,0 +1,174 @@
+body {
+    background-color: #B6B2B2;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 1em;
+    font-size: clamp(1rem, 3.5vh, 2.5rem);
+    justify-content: space-between;
+}
+
+.num {
+    font-size: inherit;
+    grid-column: span 1;
+    background-color: hsl(var(--hue, 240),
+            var(--saturation, 1%),
+            calc(var(--lightness, 33%) + var(--lightness-offset, 0%)));
+    color: hsl(var(--hue, 0),
+            var(--saturation, 3%),
+            calc(var(--lightness, 71%) + var(--lightness-offset, 0%)));
+    border: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5em;
+    user-select: none;
+}
+
+.num.large {
+    grid-row: span 2;
+}
+
+.num:hover,
+.num:focus {
+    --lightness-offset: 10%;
+}
+
+.numpad {
+    font-size: clamp(0em, 1em, 7vw);
+    display: grid;
+    justify-content: center;
+    /* Keeps the grid items centered */
+    align-self: center;
+    /* Centers the numpad vertically in the flex container */
+    grid-template-columns: repeat(4, minmax(1.5em, 3em));
+    grid-auto-rows: 3em;
+    gap: 0.3em;
+    margin: auto;
+    /* Centers the grid horizontally */
+}
+
+.formula {
+    font-size: clamp(1em, 2em, 11vw);
+    font-weight: bold;
+    user-select: none;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: minmax(auto, 5em) 3em;
+    color: hsl(var(--hue, 0),
+            var(--saturation, 3%),
+            calc(var(--lightness, 71%) + var(--lightness-offset, 0%)));
+    margin-bottom: 0.5em;
+}
+
+.equation {
+    grid-column: span 1;
+    height: 2em;
+    background-color: hsl(var(--hue, 240),
+            var(--saturation, 1%),
+            calc(var(--lightness, 3%) + var(--lightness-offset, 0%)));
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    padding-left: .2em;
+    border-top-left-radius: 0.1em;
+    border-bottom-left-radius: 0.1em;
+    color: hsl(var(--hue, 0),
+            var(--saturation, 3%),
+            calc(var(--lightness, 71%) + var(--lightness-offset, 0%)));
+}
+
+.formula.active {
+    --lightness-offset: 30%;
+}
+
+.answer {
+    grid-column: span 1;
+    height: 2em;
+    background-color: hsl(var(--hue, 240),
+            var(--saturation, 1%),
+            calc(var(--lightness, 33%) + var(--lightness-offset, 0%) * 2 / 3));
+    display: flex;
+    align-items: center;
+    padding-left: .2em;
+    border-top-right-radius: 0.1em;
+    border-bottom-right-radius: 0.1em;
+}
+
+.alert-container {
+    position: fixed;
+    top: 15vh;
+    left: 50vw;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: flex;
+}
+
+.alert {
+    background-color: hsl(240, 1%, 53%);
+    padding: 1em;
+    border-radius: .1em;
+    opacity: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word; 
+    padding: 10px;
+    width: 70vw
+}
+
+.ribbon button {
+    font-size: clamp(0em, 1em, 7vw);
+    grid-column: span 1;
+    background-color: hsl(var(--hue, 240),
+            var(--saturation, 1%),
+            calc(var(--lightness, 33%) + var(--lightness-offset, 0%)));
+    color: hsl(var(--hue, 0),
+            var(--saturation, 3%),
+            calc(var(--lightness, 71%) + var(--lightness-offset, 0%)));
+    border: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1.5em;
+}
+
+.ribbon {
+    font-size: 1em;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: repeat(7, minmax(auto, 2em));
+    grid-auto-rows: 1.5em;
+    gap: 0.3em;
+    margin-bottom: 0.5em;
+}
+
+.ribbon button.large {
+    grid-column: span 3;
+}
+
+.ribbon button:hover,
+.ribbon button:focus {
+    --lightness-offset: 10%;
+}
+
+/* @media (max-aspect-ratio: 8/10) {
+    .numpad {
+        position: absolute;
+        bottom: 2em;
+        left: 50%;
+        transform: translateX(-50%); 
+        font-size: clamp(0em, 1em, 7vw);
+        display: grid;
+        justify-content: center;
+        align-content: center;
+        grid-template-columns: repeat(4, minmax(1.5em, 3em));
+        grid-auto-rows: 3em;
+        gap: 0.3em;
+    }
+} */

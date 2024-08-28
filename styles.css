@@ -1,0 +1,61 @@
+body {
+    font-size: clamp(1rem, 3.5vh, 2.5rem);
+    background-color: #B6B2B2;
+    height: 80vh;
+    margin: 0;
+    padding-top: 10vh;
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    font-family: 'Times New Roman';
+    align-items: center;
+}
+
+svg {
+    font-size: 2em;
+    width: clamp(0px, 8em, 80vw);
+    font-family: 'Times New Roman';
+    user-select: none;
+    overflow: visible;
+    /* border: 2px solid red; */
+}
+
+.brickwall {
+    font-size: inherit;
+    font-family: inherit;
+    display: grid;
+    justify-content: center;
+    align-self: center;
+    grid-template-columns: repeat(4, 3em);
+    grid-auto-rows: 4em;
+    gap: 0.1em;
+    margin: auto;
+}
+
+.brick {
+    font-size: inherit;
+    font-family: inherit;
+    grid-column: span 1;
+    background-color: hsl(var(--hue, 240),
+            var(--saturation, 1%),
+            calc(var(--lightness, 33%) + var(--lightness-offset, 0%)));
+    color: hsl(var(--hue, 0),
+            var(--saturation, 3%),
+            calc(var(--lightness, 71%) + var(--lightness-offset, 0%)));
+    border: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    text-decoration: none;
+}
+
+.brick.large {
+    grid-column: span 2;
+}
+
+.brick.text:hover,
+.brick.text:focus {
+    --lightness-offset: 10%;
+}
