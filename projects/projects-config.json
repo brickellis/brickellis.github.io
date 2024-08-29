@@ -1,0 +1,28 @@
+{
+    "sections": [
+        {
+            "title": "Mona--Lisa",
+            "url": "https://github.com/brickellis/mona-lisa"
+        },
+        {
+            "title": "10k--Swing Challenge",
+            "url": "https://github.com/brickellis/10k-Swing-Challenge"
+        },
+        {
+            "title": "Minimalist RAG",
+            "url": "https://github.com/brickellis/Minimalist-RAG"
+        },
+        {
+            "title": "Book2Book",
+            "url": "https://github.com/brickellis/Book2Book"
+        },
+        {
+            "title": "BYU--Covid--Bot",
+            "url": "https://github.com/brickellis/byucovidbot"
+        },
+        {
+            "title": "Brickle",
+            "url": "https://github.com/brickellis/brickle"
+        }
+    ]
+}

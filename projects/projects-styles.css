@@ -1,0 +1,88 @@
+body {
+    font-size: clamp(1rem, 3.5vh, 2.5rem);
+    background-color: #B6B2B2;
+    height: 80vh;
+    margin: 0;
+    padding-top: 5vh;
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    font-family: 'Times New Roman';
+    align-items: center;
+}
+
+svg {
+    font-size: 2em;
+    width: clamp(0px, 4em, 50vw);
+    font-family: 'Times New Roman';
+    user-select: none;
+    overflow: visible;
+    /* border: 2px solid red; */
+}
+
+.brickwall {
+    font-size: clamp(0px, 1em, 5vw);
+    font-family: inherit;
+    display: grid;
+    justify-content: center;
+    align-self: center;
+    grid-template-columns: repeat(7, 2.5em);
+    grid-auto-rows: clamp(0px, 3em, 15vw);
+    gap: 0.1em;
+    margin: auto;
+}
+
+.brick {
+    font-size: 0.5em;
+    font-family: inherit;
+    grid-column: span 1;
+    background-color: hsl(var(--hue, 240),
+            var(--saturation, 1%),
+            calc(var(--lightness, 33%) + var(--lightness-offset, 0%) + var(--hover-offset, 0%)));
+    color: hsl(var(--hue, 0),
+            var(--saturation, 3%),
+            calc(var(--lightness, 71%) + var(--lightness-offset, 0%) + var(--hover-offset, 0%)));
+    border: none;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    text-decoration: none;
+    text-align: center;
+}
+
+.brick.large {
+    grid-column: span 2;
+}
+
+.brick.invis {
+    background-color: #B6B2B2;
+    color: hsl(var(--hue, 240),
+            var(--saturation, 1%),
+            calc(var(--lightness, 33%) + var(--lightness-offset, 0%) + var(--hover-offset, 0%)));
+    text-align: left;
+    justify-content: left;
+    font-weight: bold;
+    /* border: 2px solid red; */
+}
+.brick.invis.left {
+    text-align: right;
+    justify-content: right;
+    /* border: 2px solid red; */
+}
+
+.brick.light {
+    --lightness-offset: 10%;
+}
+
+.brick.lighter {
+    --lightness-offset: 20%;
+}
+
+.brick.dark {
+    --lightness-offset: -10%;
+}
+a:hover, a:focus {
+    --hover-offset: 10%;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="projects-styles.css">
+    <title id="pageTitle">brickellis.github.io</title>
+</head>
+
+<body>
+    <svg viewBox="5 14 700 150">
+        <a href="../index.html">
+            <defs>
+                <mask id="lineMask">
+                    <rect width="100%" height="100%" fill="white" />
+                    <line x1="50" y1="150" x2="50" y2="50" stroke="black" stroke-width="2" />
+                    <line x1="14.64" y1="14.64" x2="50" y2="50" stroke="black" stroke-width="2" />
+                    <line x1="250" y1="50" x2="50" y2="50" stroke="black" stroke-width="2" />
+                    <text x="150" y="110" dominant-baseline="middle" text-anchor="middle" fill="black">Ellis</text>
+                </mask>
+            </defs>
+            <polygon points="250,150 50,150 14.64,114.64 14.64,14.64 214.64,14.64 250,50" mask="url(#lineMask)"
+                fill="#535355" />
+            <text id="svgText" x="700" y="110" dominant-baseline="middle" text-anchor="end"
+                fill="#535355">brickellis.github.io</text>
+        </a>
+    </svg>
+    <div id="brickwall" class="brickwall"></div>
+
+    <script>
+        fetch('projects-config.json')
+            .then(response => response.json())
+            .then(config => {
+                const brickwallDiv = document.getElementById('brickwall');
+                const classes = ['dark', 'light', 'lighter']; // Array of classes to cycle through
+                let counter = 0; // Counter to keep track of the current class
+
+                config.sections.forEach(entry => {
+                    const currentClass = classes[counter % classes.length]; // Get the current class to apply
+
+                    // Increment the class index
+                    counter = counter + 1;
+
+                    // Create an element for each entry
+                    const entryDiv = document.createElement(entry.url ? 'a' : 'div');
+
+                    // if (!entry.title) {
+                    //     entryDiv.className = 'brick space large invis';
+                    // }
+                    // else {
+                    //     entryDiv.className = 'brick space large ' + currentClass;
+                    // }
+                    entryDiv.className = 'brick space large ' + currentClass;
+
+                    if (entry.url) {
+                        entryDiv.href = entry.url;
+                        entryDiv.target = '_blank';
+                        entryDiv.rel = 'noopener noreferrer';
+                    }
+
+                    entryDiv.innerHTML = entry.title.replace(/ /g, '<br>').replace(/--/g, ' ');
+
+                    brickwallDiv.appendChild(entryDiv);
+
+                    // Add extra spacer elements if needed
+                    if (counter % 6 === 3) {
+                        const spacerDiv = document.createElement('div');
+                        const spacerDiv2 = document.createElement('div');
+                        spacerDiv.className = 'brick space small invis ' + currentClass;
+                        spacerDiv2.className = 'brick space small invis ' + currentClass;
+                        brickwallDiv.appendChild(spacerDiv);
+                        brickwallDiv.appendChild(spacerDiv2);
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading config:', error));
+
+    </script>
+</body>
+
+</html>
